@@ -1,12 +1,14 @@
 import React from "react";
 import type { Order } from "../types/types";
 
-interface OrdersGridProps {
+interface Props {
   orders: Order[];
   onDelete: (id: number) => void;
+  onEdit: (order: Order) => void;
 }
 
-const OrdersGrid: React.FC<OrdersGridProps> = ({ orders, onDelete }) => {
+
+const OrdersGrid: React.FC<Props> = ({ orders, onDelete, onEdit }) => {
   return (
     <table>
       <thead>
@@ -34,6 +36,7 @@ const OrdersGrid: React.FC<OrdersGridProps> = ({ orders, onDelete }) => {
             </td>
             <td>{o.username}</td>
             <td>
+              <button onClick={() => onEdit(o)}>Edit</button>
               <button onClick={() => onDelete(o.id)}>Delete</button>
             </td>
           </tr>

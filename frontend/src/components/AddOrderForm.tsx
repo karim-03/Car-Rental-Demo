@@ -3,20 +3,23 @@ import { api } from "../api/api";
 import type { CarType, Order } from "../types/types";
 
 interface Props {
-  onOrderAdded: (order: Order) => void;
+  onOrderSaved: () => void;
+  editingOrder?: Order | null;
+  onCancelEdit?: () => void;
 }
 
-const AddOrderForm = ({ onOrderAdded }: Props) => {
+const AddOrderForm = ({ onOrderSaved, editingOrder, onCancelEdit }: Props) => {
   const [carTypes, setCarTypes] = useState<CarType[]>([]);
 
-  const [form, setForm] = useState({
-    carTypeId: "",
-    fromDate: "",
-    toDate: "",
-    username: "",
-    mobileNumber: "",
-    comments: ""
-  });
+  const [form, setForm] = useState(() => ({
+    carTypeId: editingOrder?.carType.id.toString() ?? "",
+    fromDate: editingOrder?.fromDate.split("T")[0] ?? "",
+    toDate: editingOrder?.toDate.split("T")[0] ?? "",
+    username: editingOrder?.username ?? "",
+    mobileNumber: editingOrder?.mobileNumber ?? "",
+    comments: editingOrder?.comments ?? ""
+  }));
+
 
   const [error, setError] = useState("");
 
@@ -26,6 +29,7 @@ const AddOrderForm = ({ onOrderAdded }: Props) => {
       .then(res => setCarTypes(res.data))
       .catch(() => setError("Failed to load car types"));
   }, []);
+
 
   // 🔹 Handle input change
   const handleChange = (
@@ -38,7 +42,6 @@ const AddOrderForm = ({ onOrderAdded }: Props) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Basic validation
     if (
       !form.carTypeId ||
       !form.fromDate ||
@@ -51,19 +54,28 @@ const AddOrderForm = ({ onOrderAdded }: Props) => {
     }
 
     try {
-      const response = await api.post<Order>("/orders", {
-        carTypeId: Number(form.carTypeId),
-        fromDate: form.fromDate,
-        toDate: form.toDate,
-        username: form.username,
-        mobileNumber: form.mobileNumber,
-        comments: form.comments || null
-      });
+      if (editingOrder) {
+        await api.put(`/orders/${editingOrder.id}`, {
+          carTypeId: Number(form.carTypeId),
+          fromDate: form.fromDate,
+          toDate: form.toDate,
+          username: form.username,
+          mobileNumber: form.mobileNumber,
+          comments: form.comments || null
+        });
+      } else {
+        await api.post("/orders", {
+          carTypeId: Number(form.carTypeId),
+          fromDate: form.fromDate,
+          toDate: form.toDate,
+          username: form.username,
+          mobileNumber: form.mobileNumber,
+          comments: form.comments || null
+        });
+      }
 
-      // 🔹 Notify parent (bonus requirement)
-      onOrderAdded(response.data);
+      onOrderSaved();
 
-      // 🔹 Clear form (bonus requirement)
       setForm({
         carTypeId: "",
         fromDate: "",
@@ -73,9 +85,8 @@ const AddOrderForm = ({ onOrderAdded }: Props) => {
         comments: ""
       });
 
-      setError("");
     } catch {
-      setError("Failed to create order");
+      setError("Failed to save order");
     }
   };
 
@@ -136,7 +147,15 @@ const AddOrderForm = ({ onOrderAdded }: Props) => {
         onChange={handleChange}
       />
 
-      <button type="submit">Add Order</button>
+      {editingOrder && (
+        <button type="button" onClick={onCancelEdit}>
+          Cancel
+        </button>
+      )}
+
+      <button type="submit">
+        {editingOrder ? "Update Order" : "Add Order"}
+      </button>
     </form>
   );
 };

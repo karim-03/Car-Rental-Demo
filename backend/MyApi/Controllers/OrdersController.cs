@@ -63,6 +63,33 @@ namespace MyApi.Controllers
             await _context.SaveChangesAsync();
             return NoContent();
         }
+
+        // UPDATE
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, UpdateOrderDto dto)
+        {
+            var order = await _context.Orders
+                .Include(o => o.CarType)
+                .FirstOrDefaultAsync(o => o.Id == id);
+
+            if (order == null)
+                return NotFound();
+
+            order.CarTypeId = dto.CarTypeId;
+            order.FromDate = dto.FromDate;
+            order.ToDate = dto.ToDate;
+            order.Username = dto.Username;
+            order.MobileNumber = dto.MobileNumber;
+            order.Comments = dto.Comments;
+
+            await _context.SaveChangesAsync();
+
+            await _context.Entry(order)
+                .Reference(o => o.CarType)
+                .LoadAsync();
+
+            return Ok(order);
+        }
     }
 
 }

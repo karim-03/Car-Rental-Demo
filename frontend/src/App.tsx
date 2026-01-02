@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { api } from "./api/api";
 import type { Order } from "./types/types";
 import OrdersGrid from "./components/OrdersGrid";
@@ -7,35 +7,23 @@ import AddOrderForm from "./components/AddOrderForm";
 function App() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [fromDateFilter, setFromDateFilter] = useState("");
+  const [editingOrder, setEditingOrder] = useState<Order | null>(null);
   const [refreshKey, setRefreshKey] = useState(0);
 
 
-  // 🔹 Load orders (with optional filter)
-  
-
-
+  // 🔹 Load orders
   useEffect(() => {
-    let isMounted = true;
-
     const fetchOrders = async () => {
       const url = fromDateFilter
         ? `/orders?fromDate=${fromDateFilter}`
         : "/orders";
 
-      const response = await api.get<Order[]>(url);
-
-      if (isMounted) {
-        setOrders(response.data);
-      }
+      const res = await api.get<Order[]>(url);
+      setOrders(res.data);
     };
 
     fetchOrders();
-
-    return () => {
-      isMounted = false;
-    };
   }, [fromDateFilter, refreshKey]);
-
 
 
 
@@ -45,11 +33,12 @@ function App() {
     setOrders(prev => prev.filter(o => o.id !== id));
   };
 
-  // 🔹 Add order without reload (BONUS)
-   const addOrder = () => {
-    setRefreshKey(prev => prev + 1);
-  };
 
+  // 🔹 Called after add or edit
+  const handleOrderSaved = () => {
+    setEditingOrder(null);
+    setRefreshKey(prev => prev + 1); // triggers refetch safely
+  };
 
 
   return (
@@ -65,14 +54,22 @@ function App() {
         />
       </label>
 
-      <OrdersGrid orders={orders} onDelete={deleteOrder} />
+      <OrdersGrid
+        orders={orders}
+        onDelete={deleteOrder}
+        onEdit={order => setEditingOrder(order)}
+      />
 
       <hr />
 
-      <AddOrderForm onOrderAdded={addOrder} />
+      <AddOrderForm
+        key={editingOrder?.id ?? "new"}
+        editingOrder={editingOrder}
+        onOrderSaved={handleOrderSaved}
+        onCancelEdit={() => setEditingOrder(null)}
+      />
     </div>
   );
-
 }
 
 export default App;
