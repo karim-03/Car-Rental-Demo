@@ -91,7 +91,7 @@ const AddOrderForm = ({ onOrderSaved, editingOrder, onCancelEdit }: Props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="order-form">
       <h2>Add New Order</h2>
 
       {error && <p style={{ color: "red" }}>{error}</p>}

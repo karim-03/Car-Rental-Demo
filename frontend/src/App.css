@@ -1,42 +1,102 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Reset & base */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, Avenir, Arial, Helvetica, sans-serif;
+  color: #2b303a;
+  background-color: #bdc696;
+}
+
+/* Page container */
+.app-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 24px;
+  background-color: #dfe0dc;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.885);
+}
+
+/* Section spacing */
+.section {
+  margin-top: 32px;
+}
+
+/* Titles */
+h1 {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+h2 {
+  margin-bottom: 16px;
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+
+.orders-table th,
+.orders-table td {
+  border: 5px solid #d16014;
+  padding: 12px 16px;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.orders-table th {
+  background-color: #f67c2b;
+  font-weight: bold;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+/* Action buttons */
+.orders-table button {
+  margin-right: 8px;
+  padding: 6px 15px;
+  cursor: pointer;
+  background-color: #d1d3c4;
+  color: #2b303a;
+  border-radius: 6px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.orders-table button:hover {
+  background-color: #bdc696;
 }
 
-.card {
-  padding: 2em;
+.order-form {
+  display: flex;
+  flex-direction: column; /* stack vertically */
+  align-items: center;    /* center horizontally */
+  gap: 12px;              /* space between inputs */
+  max-width: 400px;       /* optional: limit width for readability */
+  margin: 0 auto;         /* center the whole form */
+  padding: 16px;
+  background-color: #d16014;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.881);
 }
 
-.read-the-docs {
-  color: #888;
+.order-form input,
+.order-form select {
+  width: 100%;           /* make inputs full-width */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.order-form button {
+  width: 100%;           /* full width button */
+  padding: 10px;
+  background-color: #d1d3c4;
+  color: #2b303a;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.order-form button:hover {
+  background-color: #bdc696;
 }

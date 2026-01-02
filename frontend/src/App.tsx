@@ -42,32 +42,33 @@ function App() {
 
 
   return (
-    <div>
+    <div className="app-container">
       <h1>Car Rental Orders</h1>
+      <div className="section">
+        <label>
+          Filter From Date:
+          <input
+            type="date"
+            value={fromDateFilter}
+            onChange={e => setFromDateFilter(e.target.value)}
+          />
+        </label>
 
-      <label>
-        Filter From Date:
-        <input
-          type="date"
-          value={fromDateFilter}
-          onChange={e => setFromDateFilter(e.target.value)}
+        <OrdersGrid
+          orders={orders}
+          onDelete={deleteOrder}
+          onEdit={order => setEditingOrder(order)}
         />
-      </label>
+      </div>
 
-      <OrdersGrid
-        orders={orders}
-        onDelete={deleteOrder}
-        onEdit={order => setEditingOrder(order)}
-      />
-
-      <hr />
-
-      <AddOrderForm
-        key={editingOrder?.id ?? "new"}
-        editingOrder={editingOrder}
-        onOrderSaved={handleOrderSaved}
-        onCancelEdit={() => setEditingOrder(null)}
-      />
+      <div className="section">
+        <AddOrderForm
+          key={editingOrder?.id ?? "new"}
+          editingOrder={editingOrder}
+          onOrderSaved={handleOrderSaved}
+          onCancelEdit={() => setEditingOrder(null)}
+        />
+      </div>
     </div>
   );
 }

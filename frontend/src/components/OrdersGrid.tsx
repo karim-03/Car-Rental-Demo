@@ -10,9 +10,9 @@ interface Props {
 
 const OrdersGrid: React.FC<Props> = ({ orders, onDelete, onEdit }) => {
   return (
-    <table>
+    <table className="orders-table">
       <thead>
-        <tr>
+        <tr> 
           <th>Car</th>
           <th>From</th>
           <th>To</th>
