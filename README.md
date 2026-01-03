@@ -12,7 +12,6 @@ What the app does is:
 - Allow the user to filter the table contents based on the "From Date" that the user can choose.
 - Allow the user to both delete and edit table entries, while seamlessly updating the table accordingly.
 <br/>
-<br/>
 
 ## Technologies used:
 
@@ -35,7 +34,6 @@ What the app does is:
     - Fairly simple, only 2 tables needed for this project:
 
     ![alt text](frontend/src/assets/CarRentalDatabase.png)
-<br/>
 <br/>
 
 ## Final Note:
