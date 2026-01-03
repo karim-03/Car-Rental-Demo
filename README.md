@@ -39,6 +39,6 @@ What the app does is:
 ## Final Note:
 Despite my lack of direct, first hand experience with both React and ASP.NET, and the addition of time pressure to finish this project within a few days, I am confident I had delivered a satisfactory solution.
 
-It took quite a bit of research, trial and error, but MOST IMPORTANTLY applying my existing knowledge of FullStack Development onto these new technologies. And thanks to the combination of all this effort, it all came together quite nicely.
+It took quite a bit of research, trial and error, but MOST IMPORTANTLY applying my EXISTING knowledge of FullStack Development onto these new technologies. And thanks to the combination of all this effort, it all came together quite nicely.
 
 I have learned a lot in this incredibly short time and am now more than willing to dive much deeper into this side of software engineering. Considering that this project merely scratches the surface of what can be done with these tools, I already plan to explore and push the limits of what I can do with it myself.
