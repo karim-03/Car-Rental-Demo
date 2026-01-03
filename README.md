@@ -37,7 +37,7 @@ What the app does is:
 <br/>
 
 ## Final Note:
-Despite my lack of first hand experience with either React or ASP.NET, and the addition of time pressure to finish this project within a few days, I am confident I had delivered a satisfactory solution.
+Despite my lack of direct, first hand experience with both React and ASP.NET, and the addition of time pressure to finish this project within a few days, I am confident I had delivered a satisfactory solution.
 
 It took quite a bit of research, trial and error, but MOST IMPORTANTLY applying my existing knowledge of FullStack Development onto these new technologies. And thanks to the combination of all this effort, it all came together quite nicely.
 
