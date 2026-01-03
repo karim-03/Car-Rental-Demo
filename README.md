@@ -13,7 +13,6 @@ What the app does is:
 - Allow the user to both delete and edit table entries, while seamlessly updating the table accordingly.
     <br/>
 ## Technologies used:
-<br/>
 
 1. **FRONTEND**:
     - React (19.2.3) as the Framework + React Hooks:
