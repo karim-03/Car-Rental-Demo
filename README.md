@@ -11,7 +11,9 @@ What the app does is:
 - Handle this information and immediately display it in the table positioned above, without the need to refresh the page.
 - Allow the user to filter the table contents based on the "From Date" that the user can choose.
 - Allow the user to both delete and edit table entries, while seamlessly updating the table accordingly.
-    <br/>
+<br/>
+<br/>
+
 ## Technologies used:
 
 1. **FRONTEND**:
