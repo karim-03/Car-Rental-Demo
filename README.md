@@ -9,7 +9,7 @@ What the app does is:
 - Handle this information and immediately display it in the table positioned above, without the need to refresh the page.
 - Allow the user to filter the table contents based on the "From Date" that the user can choose.
 - Allow the user to both delete and edit table entries, while seamlessly updating the table accordingly.
-
+    <br/>
 ## Technologies used:
 1. **FRONTEND**:
     - React (19.2.3) as the Framework + React Hooks:
@@ -18,19 +18,19 @@ What the app does is:
         - useCallBack
     - TypeScript (5.9.3) for props, state, and API responces
     - Axios (1.13.2) to communicate with the backend endpoints
-
+    <br/>
 2. **BACKEND**:
     - .NET 8 (8.0.416) as the Framework
     - ASP.NET Core Web API (8.0.22) to build REST endpoints
     - Entity Framework Core (8.0.8) for database interactions and relational mapping
-
+    <br/>
 3. **DATABASE**:
     - PostgreSQL (via pgAdmin 4 ver 9.8)
     - Access via EF Core
     - Fairly simple, only 2 tables needed for this project:
 
     ![alt text](frontend/src/assets/CarRentalDatabase.png)
-
+    <br/>
 ## Final Note:
 Despite my lack of first hand experience with either React or ASP.NET, and the addition of time pressure to finish this project within a few days, I am confident I had delivered a satisfactory solution.
 
