@@ -1,5 +1,7 @@
 # Car Rental Demo
 ![alt text](frontend/src/assets/CarDealershipPage.png)
+<br/>
+<br/>
 
 ## Description:
 This is a web app meant to show my ability to handle working with React, .NET, and other technologies that will be listed below. 
@@ -11,6 +13,8 @@ What the app does is:
 - Allow the user to both delete and edit table entries, while seamlessly updating the table accordingly.
     <br/>
 ## Technologies used:
+<br/>
+
 1. **FRONTEND**:
     - React (19.2.3) as the Framework + React Hooks:
         - useState
@@ -30,7 +34,9 @@ What the app does is:
     - Fairly simple, only 2 tables needed for this project:
 
     ![alt text](frontend/src/assets/CarRentalDatabase.png)
-    <br/>
+<br/>
+<br/>
+
 ## Final Note:
 Despite my lack of first hand experience with either React or ASP.NET, and the addition of time pressure to finish this project within a few days, I am confident I had delivered a satisfactory solution.
 
