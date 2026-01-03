@@ -1,3 +1,4 @@
+//Data Transfer Object for creating a new Order
 namespace MyApi.DTOs
 {
     public class CreateOrderDto

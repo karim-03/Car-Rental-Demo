@@ -6,7 +6,7 @@ namespace MyApi.Models
         public int CarTypeId { get; set; }
         public CarType CarType { get; set; } = null!;
 
-        public DateOnly FromDate { get; set; }
+        public DateOnly FromDate { get; set; }  // Date ONLY (no time component) for less hassles
         public DateOnly ToDate { get; set; }
 
         public string Username { get; set; } = null!;

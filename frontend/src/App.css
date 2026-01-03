@@ -32,6 +32,7 @@ h2 {
   margin-bottom: 16px;
 }
 
+/* Orders table */
 .orders-table {
   width: 100%;
   border-collapse: collapse;
@@ -65,13 +66,14 @@ h2 {
   background-color: #bdc696;
 }
 
+/* Add/Edit Order Form */
 .order-form {
   display: flex;
-  flex-direction: column; /* stack vertically */
-  align-items: center;    /* center horizontally */
-  gap: 12px;              /* space between inputs */
-  max-width: 400px;       /* optional: limit width for readability */
-  margin: 0 auto;         /* center the whole form */
+  flex-direction: column; 
+  align-items: center;
+  gap: 12px;            
+  max-width: 400px;     
+  margin: 0 auto;       
   padding: 16px;
   background-color: #d16014;
   border-radius: 8px;
@@ -80,7 +82,7 @@ h2 {
 
 .order-form input,
 .order-form select {
-  width: 100%;           /* make inputs full-width */
+  width: 100%;          
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -88,7 +90,7 @@ h2 {
 }
 
 .order-form button {
-  width: 100%;           /* full width button */
+  width: 100%;           
   padding: 10px;
   background-color: #d1d3c4;
   color: #2b303a;

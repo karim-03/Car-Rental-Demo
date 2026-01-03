@@ -11,7 +11,7 @@ function App() {
   const [refreshKey, setRefreshKey] = useState(0);
 
 
-  // 🔹 Load orders
+  // Load orders (with fromDate filter option) ((bonus point!))
   useEffect(() => {
     const fetchOrders = async () => {
       const url = fromDateFilter
@@ -27,20 +27,20 @@ function App() {
 
 
 
-  // 🔹 Delete order
+  // Delete order
   const deleteOrder = async (id: number) => {
     await api.delete(`/orders/${id}`);
     setOrders(prev => prev.filter(o => o.id !== id));
   };
 
 
-  // 🔹 Called after add or edit
+  // Called after add or edit
   const handleOrderSaved = () => {
     setEditingOrder(null);
-    setRefreshKey(prev => prev + 1); // triggers refetch safely
+    setRefreshKey(prev => prev + 1); // triggers refetch safely (bonus point!)
   };
 
-
+  // Main render, the entire app
   return (
     <div className="app-container">
       <h1>Car Rental Orders</h1>

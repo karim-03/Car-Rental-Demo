@@ -1,3 +1,4 @@
+// Data Transfer Object to update existing Orders
 namespace MyApi.DTOs
 {
     public class UpdateOrderDto

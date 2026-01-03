@@ -13,7 +13,7 @@ const AddOrderForm = ({ onOrderSaved, editingOrder, onCancelEdit }: Props) => {
 
   const [form, setForm] = useState(() => ({
     carTypeId: editingOrder?.carType.id.toString() ?? "",
-    fromDate: editingOrder?.fromDate.split("T")[0] ?? "",
+    fromDate: editingOrder?.fromDate.split("T")[0] ?? "", // .split("T")[0] to get YYYY-MM-DD (extra precaution)
     toDate: editingOrder?.toDate.split("T")[0] ?? "",
     username: editingOrder?.username ?? "",
     mobileNumber: editingOrder?.mobileNumber ?? "",
@@ -23,7 +23,7 @@ const AddOrderForm = ({ onOrderSaved, editingOrder, onCancelEdit }: Props) => {
 
   const [error, setError] = useState("");
 
-  // 🔹 Load Car Types for dropdown
+  // Load Car Types for dropdown
   useEffect(() => {
     api.get<CarType[]>("/cartypes")
       .then(res => setCarTypes(res.data))
@@ -31,17 +31,18 @@ const AddOrderForm = ({ onOrderSaved, editingOrder, onCancelEdit }: Props) => {
   }, []);
 
 
-  // 🔹 Handle input change
+  // Handle input change
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // 🔹 Submit form
+  // Submit form
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Basic validation
     if (
       !form.carTypeId ||
       !form.fromDate ||
@@ -54,7 +55,8 @@ const AddOrderForm = ({ onOrderSaved, editingOrder, onCancelEdit }: Props) => {
     }
 
     try {
-      if (editingOrder) {
+      if (editingOrder) {    
+        // Edit existing order                   
         await api.put(`/orders/${editingOrder.id}`, {
           carTypeId: Number(form.carTypeId),
           fromDate: form.fromDate,
@@ -64,6 +66,7 @@ const AddOrderForm = ({ onOrderSaved, editingOrder, onCancelEdit }: Props) => {
           comments: form.comments || null
         });
       } else {
+        // Add new order
         await api.post("/orders", {
           carTypeId: Number(form.carTypeId),
           fromDate: form.fromDate,
@@ -76,6 +79,7 @@ const AddOrderForm = ({ onOrderSaved, editingOrder, onCancelEdit }: Props) => {
 
       onOrderSaved();
 
+      // Clear form after submission
       setForm({
         carTypeId: "",
         fromDate: "",
@@ -95,7 +99,7 @@ const AddOrderForm = ({ onOrderSaved, editingOrder, onCancelEdit }: Props) => {
       <h2>Add New Order</h2>
 
       {error && <p style={{ color: "red" }}>{error}</p>}
-
+      
       <select
         name="carTypeId"
         value={form.carTypeId}

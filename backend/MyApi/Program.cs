@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -16,6 +15,7 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Add CORS builder services to enable React access
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReact",
@@ -37,6 +37,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+
+// Sample data for WeatherForecast endpoint
 var summaries = new[]
 {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -45,6 +47,7 @@ var summaries = new[]
 // Enable CORS
 app.UseCors("AllowReact");
 
+// WeatherForecast endpoint (sample with swagger)
 app.MapGet("/weatherforecast", () =>
 {
     var forecast =  Enumerable.Range(1, 5).Select(index =>

@@ -7,6 +7,7 @@ using MyApi.DTOs;
 
 namespace MyApi.Controllers
 {
+    // Specify that this is an API controller (NOT a regular MVC controller) and set the route
     [ApiController]
     [Route("api/orders")]
     public class OrdersController : ControllerBase

@@ -28,11 +28,14 @@ const OrdersGrid: React.FC<Props> = ({ orders, onDelete, onEdit }) => {
             <td>{o.fromDate}</td>
             <td>{o.toDate}</td>
             <td>
-              {Math.ceil(
-                (new Date(o.toDate).getTime() - new Date(o.fromDate).getTime()) /
-                  (1000 * 60 * 60 * 24)
-              )}{" "}
-              days
+              // Calculate duration in days, not the most optimized but works, simple and clear, and no extra libs needed!
+              {(() => {
+                const days = Math.ceil(
+                  (new Date(o.toDate).getTime() - new Date(o.fromDate).getTime()) /
+                    (1000 * 60 * 60 * 24) + 1
+                );
+                return `${days} ${days === 1 ? "day" : "days"}`;
+              })()}
             </td>
             <td>{o.username}</td>
             <td>

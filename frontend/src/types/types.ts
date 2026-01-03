@@ -1,3 +1,5 @@
+// export tables (types) from the backend API, to use across the frontend components
+
 export interface CarType {
   id: number;
   name: string;
