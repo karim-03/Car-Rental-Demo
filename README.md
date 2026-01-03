@@ -3,6 +3,7 @@
 
 ## Description:
 This is a web app meant to show my ability to handle working with React, .NET, and other technologies that will be listed below. 
+
 What the app does is: 
 1. Allow the user to place an order on one of 4 types of cars, and attach their information to it, as well as for how long they'd like to rent it out. 
 2. Handle this information and immediately display it in the table positioned above, without the need to refresh the page.
@@ -25,4 +26,10 @@ What the app does is:
     - PostgreSQL (via pgAdmin 4 ver 9.8)
     - Access via EF Core
     - Fairly simple, only 2 tables needed for this project:
-        - ![alt text](frontend/src/assets/CarRentalDatabase.png)
+
+    - ![alt text](frontend/src/assets/CarRentalDatabase.png)
+
+## Final Note:
+Despite my lack of first hand experience with either React or ASP.NET, and the addition of time pressure to finish this project within a few days, I am confident I had delivered a satisfactory solution.
+
+I have learned a lot in this incredibly short time and am now more than willing to dive much deeper into this side of software engineering. Considering that this project merely scratches the surface of what can be done with these tools, I already plan to explore and push the limits of what I can do with it myself.
